@@ -12,6 +12,7 @@ import (
 
 func main() {
 	r := mux.NewRouter()
+	r.HandleFunc("/", function.RootHandler).Methods("GET")
 	r.HandleFunc("/{num}", function.RootHandler).Methods("GET")
 
 	srv := &http.Server{

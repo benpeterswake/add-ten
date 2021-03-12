@@ -14,8 +14,13 @@ type Response struct {
 
 func NewRouter() *mux.Router {
 	r := mux.NewRouter()
+	r.HandleFunc("/", DefaultHandler).Methods("GET")
 	r.HandleFunc("/{num}", AddTenHandler).Methods("GET")
 	return r
+}
+
+func DefaultHandler(w http.ResponseWriter, r *http.Request) {
+	w.Write([]byte("Welcome to add ten! Add a number to the end of the URL!"))
 }
 
 func AddTenHandler(w http.ResponseWriter, r *http.Request) {
